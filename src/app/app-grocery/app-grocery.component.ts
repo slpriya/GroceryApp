@@ -28,7 +28,9 @@ export class AppGroceryComponent implements OnInit {
 
     if ((this.task?.name) && (this.task.id == 0)) {
       this.tasks.push({ id: (new Date()).getTime(), name: this.task.name, strike: false });
-
+    }
+    else{
+        console.log("else validation goes here");
     }
     this.task = {
       name: '',
