@@ -1,0 +1,30 @@
+.strike {
+  text-decoration: line-through;
+}
+
+.mygrocery {
+  background: #ccc;
+  height: 100vh;
+}
+
+h2 {
+  text-align: center;
+}
+
+.col-centered {
+  margin: 0 auto;
+  float: none;
+}
+
+button {
+  border-radius: 0;
+  height: 37px;
+  outline: none;
+  border-width: 0px;
+  ;
+}
+
+.txtSearch {
+  margin-right: 0px;
+  padding-right: 0px;
+}
