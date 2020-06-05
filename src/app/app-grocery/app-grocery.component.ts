@@ -30,7 +30,7 @@ export class AppGroceryComponent implements OnInit {
       this.tasks.push({ id: (new Date()).getTime(), name: this.task.name, strike: false });
     }
     else{
-
+        console.log("else validation goes here");
     }
     this.task = {
       name: '',
