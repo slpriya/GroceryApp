@@ -4,32 +4,41 @@
   <div class="row">
     <div class="col-lg-3 col-xs-6 col-md-4 col-centered">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Enter grocery items" id="txtSearch"
-          [(ngModel)]="task.name" />
+        <input type="text" class="form-control" placeholder="Enter grocery items" id="txtSearch" required minlength="3"
+          (keyup.enter)="addGrocery()" #name="ngModel" [(ngModel)]="task.name" />
         <div class="input-group-btn">
-          <button class="btn btn-primary" type="button" (click)="addGrocery()">
+          <button class="btn btn-primary" type="button" (click)="addGrocery()" [disabled]="!name.valid">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
           </button>
         </div>
       </div>
-    </div>
-  </div>
-  <br>
 
+      <div *ngIf="name.touched && name.errors"></div>
+      <div class="alert alert-danger" *ngIf="name.errors.required">
+        The company name is required
+      </div>
+
+      <div class="alert alert-danger" *ngIf="(name.errors.minlength) && (name.errors.required) ">
+        The company name should be at least 3 characters long
+      </div>
+
+    </div>
+    <br>
+  </div>
   <!--
   <span>{{tasks|json}}</span>
   <span>{{length}}</span> -->
   <div class="row">
-  <div class="col-lg-3 col-xs-6 col-md-4 col-centered">
-    <ul class="list-group">
-      <li *ngFor="let item of tasks" class="list-group-item list-group-item-success">
-        <!-- <span>{{item.name | titlecase}}</span> -->
-        <span (click)="onStrike(item)" [ngClass]="{'strike': item.strike}"> {{ item.name | titlecase}} </span>
-        <span (click)="onEdit(item)" class="fa fa-pencil  floatright"></span>
-        <span (click)="removeGrocery(item)" class="fa fa-times floatright"> </span>
-      </li>
-    </ul>
-  </div>
+    <div class="col-lg-3 col-xs-6 col-md-4 col-centered">
+      <ul class="list-group">
+        <li *ngFor="let item of tasks" class="list-group-item list-group-item-success">
+          <!-- <span>{{item.name | titlecase}}</span> -->
+          <span (click)="onStrike(item)" [ngClass]="{'strike': item.strike}"> {{ item.name | titlecase}} </span>
+          <span (click)="removeGrocery(item)" class="fa fa-times float-right"> </span>
+          <span (click)="onEdit(item)" class="fa fa-pencil  float-right"> &nbsp;</span>
+        </li>
+      </ul>
+    </div>
   </div>
 
 </div>
