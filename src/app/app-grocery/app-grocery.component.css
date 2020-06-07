@@ -1,9 +1,22 @@
 .strike {
   text-decoration: line-through;
+ }
+
+h1 {
+  padding-top: 50px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.form-control {
+  border-style: solid;
+  border: 1px black;
 }
 
 .mygrocery {
-  background: #ccc;
+  background: rgb(248, 237, 237);
   height: 100vh;
 }
 
@@ -17,14 +30,49 @@ h2 {
 }
 
 button {
-  border-radius: 0;
-  height: 37px;
+  border-radius: 1px;
+  height: 43px;
   outline: none;
   border-width: 0px;
-  ;
 }
 
-.txtSearch {
-  margin-right: 0px;
-  padding-right: 0px;
+#listItems {
+  color: black;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+#txtSearch {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+#onEdit:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
+
+#onEdit {
+  font-size: 22px;
+  vertical-align: middle;
+  padding-top: 5px;
+}
+
+#onDelete {
+  padding-top: 5px;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+#onDelete:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
 }
