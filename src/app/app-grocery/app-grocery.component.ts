@@ -14,6 +14,8 @@ export class AppGroceryComponent implements OnInit {
     name: '',
     id: 0
   };
+
+  // task.name = new FormControl('', Validators.minLength(3));
   constructor() { }
 
   ngOnInit(): void {
