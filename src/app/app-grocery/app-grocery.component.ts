@@ -5,21 +5,19 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app-grocery.component.html',
   styleUrls: ['./app-grocery.component.css']
 })
+
 export class AppGroceryComponent implements OnInit {
-
   tasks = [];
-  length: number;
-
   task = {
     name: '',
+    strike: false,
     id: 0
   };
 
-  // task.name = new FormControl('', Validators.minLength(3));
+  isEdit: boolean = false;
+
   constructor() { }
-
   ngOnInit(): void {
-
   }
 
 
@@ -27,25 +25,31 @@ export class AppGroceryComponent implements OnInit {
    * addGrocery adds an item into the array
    */
   addGrocery() {
-
-    if ((this.task?.name) && (this.task.id == 0)) {
-      this.tasks.push({ id: (new Date()).getTime(), name: this.task.name, strike: false });
+    if ((this.task?.name) && (!this.isEdit)) {
+      this.tasks.push({
+        name: this.task.name,
+        strike: false,
+        id: this.tasks.length
+      });
     }
-    else{
-        console.log("else validation goes here");
+    else if(!this.isEdit){
+      alert("Please add item")
     }
     this.task = {
       name: '',
+      strike: false,
       id: 0
     };
+    this.isEdit = false;
   }
 
 
   /**
-   * Edit hte selected Item
+   * Edit the selected Item
    * @param item
    */
   onEdit(item) {
+    this.isEdit = true;
     this.task = item;
   }
 
@@ -55,35 +59,34 @@ export class AppGroceryComponent implements OnInit {
    * @param selectedItem
    */
   removeGrocery(selectedItem) {
-    for (let item of this.tasks) {
-      if (item.id == selectedItem.id) {
-        this.tasks.splice(this.tasks.indexOf(item), 1);
-        break;
-      }
-    }
+    var idPosition = selectedItem.id;
+    this.tasks.splice(idPosition, 1);
+    this.updateItemId();
+
     this.task = {
       name: '',
+      strike: false,
       id: 0
     };
   }
-
 
 
   /**
    * Determines whether to strike the selected Item
    * @param selectedItem
    */
-  onStrike(selectedItem) {
-    for (let item of this.tasks) {
-      if (selectedItem.id == item.id) {
-        if (item.strike) {
-          item.strike = false;
-        }
-        else {
-          item.strike = true;
-        }
-        break;
-      }
+  markItem(selectedItem) {
+    var idPostion = selectedItem.id;
+    this.tasks[idPostion].strike = this.tasks[idPostion].strike ? false : true;
+  }
+
+
+  /**
+   * Updates item id after deletion
+   */
+  updateItemId() {
+    for (var i = 0; i < this.tasks.length; i++) {
+      this.tasks[i].id = i;
     }
   }
 }
