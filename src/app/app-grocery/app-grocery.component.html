@@ -1,14 +1,15 @@
 <div class="container-fluid mygrocery">
   <h1>Grocery List Manager</h1>
-  <br/>
+  <br />
   <div class="row">
     <div class="col-lg-3 col-xs-6 col-md-4 col-centered">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Enter grocery items" id="txtSearch"
           (keyup.enter)="addGrocery()" [(ngModel)]="task.name" />
         <div class="input-group-btn">
-          <button class="btn btn-primary" type="button" (click)="addGrocery()">
-            <i class="fa fa-check-circle" aria-hidden="true"></i>
+           <button class="btn btn-primary" type="button" (click)="addGrocery()">
+            <i class="fa fa-check-circle" aria-hidden="true" *ngIf="!isEdit;"></i>
+            <i class="fa fa-pencil-square-o" aria-hidden="true" *ngIf="isEdit;"></i>
           </button>
         </div>
       </div>
@@ -19,11 +20,17 @@
     <div class="col-lg-3 col-xs-6 col-md-4 col-centered">
       <ul class="list-group">
         <li *ngFor="let item of tasks" class="list-group-item list-group-item-info" id="listItems">
-          <span (click)="onStrike(item)" [ngClass]="{'strike': item.strike}"> {{ item.name | titlecase}} </span>
-          <span (click)="removeGrocery(item)" class="fa fa-times float-right" id="onDelete"> </span>
-          <span (click)="onEdit(item)" class="fa fa-pencil  float-right" id="onEdit"> &nbsp;</span>
+          <span [ngClass]="{'strike': item.strike}"> {{ item.name | titlecase}} </span>
+          <span (click)="removeGrocery(item)" class="fa fa-trash-o float-right" id="onDelete" data-toggle="tooltip" title="Remove"> </span>
+          <span (click)="onEdit(item)" class="fa fa-pencil  float-right" id="onEdit" data-toggle="tooltip" title="Edit"> &nbsp;</span>
+          <span (click)="markItem(item)" class="fa fa-check-square-o float-right" data-toggle="tooltip" title="Mark" id="onMark"></span>
         </li>
       </ul>
     </div>
   </div>
+
+  <br />
+    <div *ngIf="isEdit;" id="selectedItem" >Selected Item is - {{ task.name  | titlecase }}</div>
+
+
 </div>

@@ -36,10 +36,28 @@ button {
   border-width: 0px;
 }
 
+#selectedItem{
+  color: black;
+  font-weight: 500;
+  font-size: 22px;
+  text-align: center;
+}
+
 #listItems {
   color: black;
   font-weight: 500;
   font-size: 22px;
+}
+
+#listItems:hover, #listItems:active{
+
+color:blue;
+background-color:snow;
+transform: scale(1.1);
+-webkit-transform: scale(1.1);
+transition: transform 0.5s;
+-webkit-transition: transform 0.5s;
+box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
 }
 
 #txtSearch {
@@ -49,13 +67,6 @@ button {
   vertical-align: middle;
 }
 
-#onEdit:hover {
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transition: transform 0.5s;
-  -webkit-transition: transform 0.5s;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-}
 
 #onEdit {
   font-size: 22px;
@@ -69,10 +80,9 @@ button {
   vertical-align: middle;
 }
 
-#onDelete:hover {
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transition: transform 0.5s;
-  -webkit-transition: transform 0.5s;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+#onMark {
+  padding-top: 5px;
+  font-size: 22px;
+  vertical-align: middle;
+  padding-right: 5px;
 }
